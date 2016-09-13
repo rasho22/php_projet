@@ -1,0 +1,67 @@
+Utilisateurs :
+- Visiteur
+- Modérateur
+- Administrateur
+
+
+
+Features (Fonctionnalité) : Visualiser la page d'accueil.
+
+La page d'accueil peut être visualisé par n'importe quel type d'U.
+Les U peuvent filtrer par date, titre et media.
+Seul les M et SA peuvent se connecter.
+Seul les M et SA connectés peuvent ajouter, editer et supprimer du contenu.
+Seul les M et SA peuvent choisir un thème et une opacité.
+Seul les SA peuvent ajouter ou supprimer des M.
+
+
+
+Scenario : Visualisation
+	Etant donné que je tape l'url du site
+	Alors j'accède à la page Accueil
+	Et je vois l'ensemble des blocs
+
+
+
+Scenario : Rechercher par le biais de la date un bloc existant
+	Etant donné que je suis sur la page Accueil
+	Lorsque un bloc existe avec la date "01/01/1970"
+	Et que je filtre sur la date "01/01/1970"
+	Alors je suis sur la page Accueil
+	Et je vois un seul bloc
+
+
+Scenario : Rechercher par le biais du titre un bloc existant
+	Etant donné que je suis sur la page Accueil
+	Lorsque un bloc existe avec la titre "blabla"
+	Et que je filtre sur la titre "blabla"
+	Alors je suis sur la page Accueil
+	Et je vois un seul bloc
+
+
+Scenario : Rechercher par le biais d'un media un bloc existant
+	Etant donné que je suis sur la page Accueil
+	Lorsque un bloc existe avec le media "blabla"
+	Et que je filtre sur le media "blabla"
+	Alors je suis sur la page Accueil
+	Et je vois un seul bloc
+
+
+Scenario : Se connecter avec les bons identifiants
+	Etant donné je suis Visteur
+	Et que je clique sur "Se connecter"
+	Lorsque je saisis un identifiant correcte
+	Et je saisis un mot de passe correcte
+	Alors j'accède à mon compte
+	Et je deviens Moderateur
+	Ou je deviens Administrateur
+
+
+Scenario : Se connecter avec les mauvais identifiants
+	Etant donné je suis Visteur
+	Et que je clique sur "Se connecter"
+	Lorsque je saisis un identifiant incorrecte
+	Ou je saisis un mot de passe incorrecte
+	Alors je n'accède pas à mon compte
+	Et j'obtiens un message d'erreur
+	Et je reste Visiteur
