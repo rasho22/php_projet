@@ -1,0 +1,41 @@
+Scenario : Ajouter un bloc
+	Etant donné que je suis connecté
+	Et je suis sur la page Accueil
+	Alors je peux uploader une photo avec du son
+	Ou je peux uploader une photo sans son
+	Ou je peux uploader une vidéo
+	Et je peux choisir la taille du bloc
+
+Scenario : Editer un bloc en tant que modérateur
+	Etant donné que je suis connecté en tant que modérateur
+	Et que j'ai déjà ajouté un bloc
+	Alors je peux changer la taille de ce bloc
+	Ou le supprimer
+	Mais si ce bloc n'existe plus
+	Alors je peux le créer
+
+Scenario : Editer un bloc en tant qu'administrateur
+	Etant donné que je suis connecté en tant qu'administrateur
+	Et qu'un bloc existe
+	Alors je peux éditer ce bloc
+	Ou le supprimer
+	Mais si ce bloc n'existe plus
+	Alors je peux le créer
+
+Scenario : Modifier la configuration de la page
+	Etant donné que je suis connecté en tant qu'administrateur
+	Ou que je suis connecté en tant que modérateur
+	Et que je suis sur la page Accueil
+	Alors je peux choisir le thème (noir, blanc ou image au choix)
+	Et je peux régler l'opacité
+
+Scenario : Ajouter ou supprimer un modérateur
+	Etant que je suis connecté en tant qu'administrateur
+	Alors je peux ajouter un compte modérateur
+	Ou je peux supprimer un compte modérateur
+
+Scenario : Ajouter un administrateur
+	Etant que je suis connecté en tant qu'administrateur
+	Alors je peux ajouter un compte administrateur
+	Ou je peux supprimer un compte administrateur
+
