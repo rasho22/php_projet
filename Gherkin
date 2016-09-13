@@ -1,7 +1,7 @@
 Utilisateurs :
 - Visiteur
 - Modérateur
-- Administrateur
+- Super-Admin
 
 
 
@@ -51,17 +51,30 @@ Scenario : Se connecter avec les bons identifiants
 	Etant donné je suis Visteur
 	Et que je clique sur "Se connecter"
 	Lorsque je saisis un identifiant correcte
-	Et je saisis un mot de passe correcte
+	Et que je saisis un mot de passe correcte
 	Alors j'accède à mon compte
 	Et je deviens Moderateur
-	Ou je deviens Administrateur
+	Ou je deviens Super-Admin
 
 
 Scenario : Se connecter avec les mauvais identifiants
 	Etant donné je suis Visteur
 	Et que je clique sur "Se connecter"
 	Lorsque je saisis un identifiant incorrecte
-	Ou je saisis un mot de passe incorrecte
+	Ou que je saisis un mot de passe incorrecte
 	Alors je n'accède pas à mon compte
 	Et j'obtiens un message d'erreur
 	Et je reste Visiteur
+
+
+Scenario : Se connecter avec les mauvais identifiants 3 fois de suite
+	Etant donné je suis Visteur
+	Et que je clique sur "Se connecter"
+	Lorsque je saisis un identifiant incorrecte 3 fois de suite
+	Ou que je saisis un mot de passe incorrecte 3 fois de suite
+	Alors mon compte se bloque
+	Et j'obtiens un mail avec un nouveau mot de passe
+	Et je reste Visiteur
+
+
+Scenario : 
