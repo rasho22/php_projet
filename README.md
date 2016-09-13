@@ -36,25 +36,25 @@ Au sein d'un bloc, il devra être possible de rajouter :
 
 ## Les scénarios
 ### 1èr scénario: visteur 
-![label](/home/apprenant22/Téléchargements/user_lambda.png)
+![label](img/user_lambda.png)
 
 ### 2èm scénario:modérateur
 
 >1.modo créer un post:
 
-![label](/home/apprenant22/Téléchargements/user_modo.png)
+![label](img/user_modo.png)
 
 >2.modo éditer un post:
 
-![label](/home/apprenant22/Téléchargements/modo_modif_post.png)
+![label](img/modo_modif_post.png)
 
 >3.modo supprimer un post:
 
-![label](/home/apprenant22/Téléchargements/supp_post_modo.png)
+![label](img/supp_post_modo.png)
 
 >4.modo configuartion:
 
-![label](/home/apprenant22/Téléchargements/modo_perso_accueil.png)
+![label](img/modo_perso_accueil.png)
 
 ### 3èm scénario:superadmin
-![label](/home/apprenant22/Téléchargements/supuser_add_modo.png)
+![label](img/supuser_add_modo.png)
