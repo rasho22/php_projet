@@ -14,7 +14,9 @@ Seul les M et SA connectés peuvent ajouter, editer et supprimer du contenu.
 Seul les M et SA peuvent choisir un thème et une opacité.
 Seul les SA peuvent ajouter ou supprimer des M.
 
-
+		===================
+		===VISUALISATION===
+		===================
 
 Scenario : Visualisation de la page Accueil
 	Etant donné que je tape l'url du site
@@ -27,6 +29,11 @@ Scenario : Visualisation d'un bloc
 	Lorsque je clique sur un bloc
 	Alors le bloc s'agrandit
 
+
+
+		=====================
+		===RECHERCHE BLOC====
+		=====================
 
 Scenario : Rechercher par le biais de la date un bloc existant
 	Etant donné que je suis sur la page Accueil
@@ -51,6 +58,10 @@ Scenario : Rechercher par le biais d'un media un bloc existant
 	Alors je suis sur la page Accueil
 	Et je vois un seul bloc
 
+
+		===================
+		=====CONNEXION=====
+		===================
 
 Scenario : Se connecter avec les bons identifiants
 	Etant donné je suis Visteur
