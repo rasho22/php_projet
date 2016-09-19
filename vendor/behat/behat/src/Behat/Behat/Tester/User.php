@@ -2,21 +2,20 @@
 
 namespace Behat\Behat\Tester;
 
-use Behat\Behat\Tester\DBconnection;
+use Behat\Behat\Tester\DBSingleton;
 /**
 * 
 */
 class User {
-	public $id;
 	public $pseudo;
     public $email;
     public $pwd;
-    public function __construct($id, $pseudo, $email, $pwd) {
-        $this->id = $id;
+    public function __construct($pseudo, $email, $pwd) 
+    {
         $this->pseudo = $pseudo;
         $this->email = $email;
         $this->pwd = $pwd;
-        $this->dbConn = DBconnection::db();
+        
     }
 }
 
