@@ -19,9 +19,10 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function jeSuis($arg1)
     {
-        $arg1 = new User ('toto','mail@mail.com','erwann');
-
-        $connexion->exec($arg1);
+        $toto = new User ('toto','mail@mail.com','erwann');
+        /*$requete=DBSingleton::getInstance()->prepare("SELECT * FROM User");
+        $requete->fetchall();*/
+        $toto->connect();
     }
 
 
