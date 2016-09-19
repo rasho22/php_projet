@@ -1,7 +1,3 @@
-		===================
-		===VISUALISATION===
-		===================
-
 Scénario: Visualisation de la page Accueil
 	Etant donné que je tape l'url du site
 	Alors j'accède à la page Accueil
@@ -13,11 +9,6 @@ Scénario: Visualisation d'un bloc
 	Lorsque je clique sur un bloc
 	Alors le bloc s'agrandit
 
-
-
-		=====================
-		===RECHERCHE BLOC====
-		=====================
 
 Scénario: Rechercher par le biais de la date un bloc existant
 	Etant donné que je suis sur la page Accueil
@@ -42,10 +33,6 @@ Scénario: Rechercher par le biais d'un media un bloc existant
 	Alors je suis sur la page Accueil
 	Et je vois un seul bloc
 
-
-		===================
-		=====CONNEXION=====
-		===================
 
 Scénario: Se connecter avec les bons identifiants
 	Etant donné je suis Visteur

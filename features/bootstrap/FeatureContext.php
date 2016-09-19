@@ -6,7 +6,7 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Tester\User;
-
+use Behat\Behat\Tester\DBconnection;
 
 /**
  * Defines application features from the specific context.

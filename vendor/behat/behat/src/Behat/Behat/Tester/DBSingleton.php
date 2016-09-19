@@ -44,5 +44,4 @@ public function query($query_string)
  }
 
 }
-
 ?>
