@@ -5,39 +5,39 @@ use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat \ Behat \ Exception \ PendingException ;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Behat\Tester\User;
+
 
 /**
  * Defines application features from the specific context.
  */
 class adresseDuSite {
 
-}
-
-
 class FeatureContext implements Context, SnippetAcceptingContext
-{
-    /**
-     * @Given je tape l':arg1 du site
+
+     * @Given je suis :arg1
      */
-    public function jeTapeLDuSite($arg1)
+    public function jeSuis($arg1)
     {
-        $site = new adresseDuSite("URL");
+        /*$user = new User(1, 'toto', 'toto@toto.fr', 'erwann1');*/
+        throw new PendingException();
     }
 
     /**
-     * @When j'accède à la page :arg1
+     * @When j'accède à la page Accueil
      */
-    public function jAccedeALaPage($arg1)
+    public function jAccedeALaPageAccueil()
     {
-        $site = new adresseDuSite("URL");
+        throw new PendingException();
     }
 
     /**
-     * @Then je vois l'ensemble des :arg1
+     * @Then je vois l'ensemble des blocs
      */
-    public function jeVoisLEnsembleDes($arg1)
+    public function jeVoisLEnsembleDesBlocs()
     {
-        $site = new adresseDuSite("URL");
+        throw new PendingException();
     }
 
 
