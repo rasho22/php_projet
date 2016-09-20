@@ -21,7 +21,10 @@ class Block {
     
         public function select(){
     	$db = DBSingleton::getInstance();
-    	$sql = "SELECT Titre FROM Block WHERE 1";
+    	$sql = "SELECT Titre FROM Block";
+        if(!is_null($this->titre)){
+            $sql .= " WHERE Titre = ?";
+        }
     	$statement = $db ->prepare($sql);
         $statement->execute(array($this->titre));
         return $statement->fetchAll();

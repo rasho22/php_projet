@@ -21,13 +21,12 @@ class FeatureContext implements Context, SnippetAcceptingContext
     private $title = array();
     
     /**
-     * @Given je filtre sur le titre :arg1
+     * @Given je filtre sur le titre :title
      */
-    public function jeFiltreSurLeTitre($arg1)
+    public function jeFiltreSurLeTitre($title)
     {
-        //$d = DateTime::createFromFormat('d/m/Y', $arg1);
         $this->block = new Block();
-        //$this->bloc->setDate($d);
+        $this->block->setTitre($title);
        print_r($this->result = $this->block->select());
         
     }
@@ -37,25 +36,12 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function unBlocExisteAvecLeTitre($arg1)
     {
-        //print_r($this->result);
-   		foreach($this->result as $Titre)
-        {
-            if($Titre === 'Aicha') {
-                echo 'yes';
-            }
-            else {
-                echo 'non';
-            }
+        if(count($this->result)>=1){
+            echo 'yes ';
         }
-        
-        /*foreach($result as $title){
-            if($this->result === 'Musique face' ){
-                echo 'youness';   
-            }
-            else {
-                echo 'abdul';
-            }
-        }*/
+        else{
+            throw new Exception("Bloc non trouvé");
+        }
     }
 
     /**
@@ -63,7 +49,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function jeVoisUnSeulBloc()
     {
-        throw new PendingException();
+         // Nothing to do. Only Front.
     }
 
 
