@@ -11,14 +11,20 @@ class Block {
     public $image;
     public $audio;
     
-        public function __construct($titre, $date) {
-            $this->Titre = $titre;
-            $this->Date = $date;
+        public function __construct() {
+
         }    
-   
-        public function blocdate() {        
-            $requete = DBSingleton::getInstance()->prepare("SELECT `Titre` FROM `Block` WHERE 1 ");
-            $requete->execute(array($this->Titre,$this->Date));
-        }  
+        
+        public function setTitre($titre) {
+		  $this->titre = $titre;
+        }
+    
+        public function select(){
+    	$db = DBSingleton::getInstance();
+    	$sql = "SELECT Titre FROM Block WHERE 1";
+    	$statement = $db ->prepare($sql);
+        $statement->execute(array($this->titre));
+        return $statement->fetchAll();
+    }
 }
 ?>
