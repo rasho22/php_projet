@@ -7,6 +7,7 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Tester\User;
 use Behat\Behat\Tester\DBconnection;
+use Behat\Behat\Tester\Block;
 
 /**
  * Defines application features from the specific context.
@@ -14,38 +15,34 @@ use Behat\Behat\Tester\DBconnection;
 
 class FeatureContext implements Context, SnippetAcceptingContext
 {
-    /**
-     * @Given je suis :arg1
+   /**
+     * @Given je filtre sur le titre :arg1
      */
-    public function jeSuis($arg1)
+    public function jeFiltreSurLeTitre($arg1)
     {
-        //$arg1 = 'Modérateur';
-        if($arg1 == 'Modérateur' || $arg1== 'Super Admin') {
-        //moderateur ou superadmin
-            echo 'Connexion en cours ';
-            $toto = new User ('toto','mail@mail.com','erwann');
-            $toto->connect();
-        }
-        else {
-           echo 'vous êtes un visiteur non connecter';
-        }
+        if($titre = "bla") {
+            $reqTitre = new Block('bla', '30/07/1997');
+            $reqTitre->connect();
+            echo 'non';
+        }   
     }
 
     /**
-     * @When je clique sur un bloc
+     * @When un bloc existe avec le titre :arg1
      */
-    public function jeCliqueSurUnBloc()
+    public function unBlocExisteAvecLeTitre($arg1)
     {
         throw new PendingException();
     }
 
     /**
-     * @Then le bloc s'agrandit
+     * @Then je vois un seul bloc
      */
-    public function leBlocSAgrandit()
+    public function jeVoisUnSeulBloc()
     {
         throw new PendingException();
     }
+
 
 
 }

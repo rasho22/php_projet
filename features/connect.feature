@@ -6,9 +6,9 @@ Fonctionnalité: Utilisateurs
 	Je dois être capable de visualiser la page Accueil
 
 
-Scénario: Visualisation d'un bloc
-	Etant donné que je suis "visiteur"
-	Lorsque je clique sur un bloc
-	Alors le bloc s'agrandit
+Scénario: Rechercher par le biais du titre un bloc existant
+    Etant donné que je filtre sur le titre "blabla"
+    Quand un bloc existe avec le titre "blabla"
+    Alors je vois un seul bloc
 
 

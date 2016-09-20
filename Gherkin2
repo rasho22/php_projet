@@ -21,7 +21,6 @@ Scénario: Rechercher par le biais de la date un bloc existant
 Scénario: Rechercher par le biais du titre un bloc existant
 	Etant donné que je suis sur la page Accueil
 	Lorsque un bloc existe avec la titre "blabla"
-	Et que je filtre sur la titre "blabla"
 	Alors je suis sur la page Accueil
 	Et je vois un seul bloc
 
