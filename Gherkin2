@@ -1,5 +1,5 @@
 Scénario: Visualisation de la page Accueil
-	Etant donné que je suis "Visiteur"
+	Etant donné que je tape l'url du site
 	Alors j'accède à la page Accueil
 	Et je vois l'ensemble des blocs
 

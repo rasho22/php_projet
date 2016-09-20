@@ -6,8 +6,9 @@ Fonctionnalité: Utilisateurs
 	Je dois être capable de visualiser la page Accueil
 
 
-Scénario: Visualisation de la page Accueil
+Scénario: Visualisation d'un bloc
 	Etant donné que je suis "visiteur"
-	Quand j'accède à la page Accueil
-	Alors je vois l'ensemble des blocs
+	Lorsque je clique sur un bloc
+	Alors le bloc s'agrandit
+
 

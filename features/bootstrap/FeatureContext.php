@@ -14,30 +14,35 @@ use Behat\Behat\Tester\DBconnection;
 
 class FeatureContext implements Context, SnippetAcceptingContext
 {
-     /** @Given je suis :arg1
-     *
+    /**
+     * @Given je suis :arg1
      */
     public function jeSuis($arg1)
     {
-        $toto = new User ('toto','mail@mail.com','erwann');
-        /*$requete=DBSingleton::getInstance()->prepare("SELECT * FROM User");
-        $requete->fetchall();*/
-        $toto->connect();
+        //$arg1 = 'Modérateur';
+        if($arg1 == 'Modérateur' || $arg1== 'Super Admin') {
+        //moderateur ou superadmin
+            echo 'Connexion en cours ';
+            $toto = new User ('toto','mail@mail.com','erwann');
+            $toto->connect();
+        }
+        else {
+           echo 'vous êtes un visiteur non connecter';
+        }
     }
 
-
     /**
-     * @When j'accède à la page Accueil
+     * @When je clique sur un bloc
      */
-    public function jAccedeALaPageAccueil()
+    public function jeCliqueSurUnBloc()
     {
         throw new PendingException();
     }
 
     /**
-     * @Then je vois l'ensemble des blocs
+     * @Then le bloc s'agrandit
      */
-    public function jeVoisLEnsembleDesBlocs()
+    public function leBlocSAgrandit()
     {
         throw new PendingException();
     }

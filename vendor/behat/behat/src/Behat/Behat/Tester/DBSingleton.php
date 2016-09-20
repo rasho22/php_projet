@@ -24,7 +24,7 @@ class DBSingleton
  private function __construct() {
  	$db_server = "localhost";
  	$db_usr = "root";
- 	$db_psw = "facesimplon";
+ 	$db_psw = "password";
  	$db_name = "testmixite";
 	 try{
 		self::$inst = new \PDO("mysql:host=$db_server;dbname=$db_name",$db_usr,$db_psw);
