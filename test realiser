@@ -1,0 +1,31 @@
+ /** @Given je suis :arg1
+     *
+     */
+    public function jeSuis($arg1)
+    {   
+        if($arg1 == "Modérateur" || $arg1=="Super Admin"){
+            //moderateur ou superadmin
+            echo "connecting user";
+            $user = new User ('toto','mail@mail.com','erwann');
+            $user->connect();
+        }
+        else{
+            //visiteur
+        }
+    }
+
+    /**
+     * @When j'accède à la page Accueil
+     */
+    public function jAccedeALaPageAccueil()
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then je vois l'ensemble des blocs
+     */
+    public function jeVoisLEnsembleDesBlocs()
+    {
+        throw new PendingException();
+    }

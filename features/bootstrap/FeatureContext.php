@@ -7,6 +7,7 @@ use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Tester\User;
 use Behat\Behat\Tester\DBconnection;
+use Behat\Behat\Tester\Bloc;
 
 /**
  * Defines application features from the specific context.
@@ -14,33 +15,34 @@ use Behat\Behat\Tester\DBconnection;
 
 class FeatureContext implements Context, SnippetAcceptingContext
 {
-     /** @Given je suis :arg1
-     *
-     */
-    public function jeSuis($arg1)
-    {
-        $toto = new User ('toto','mail@mail.com','erwann');
-        /*$requete=DBSingleton::getInstance()->prepare("SELECT * FROM User");
-        $requete->fetchall();*/
-        $toto->connect();
-    }
-
-
+    private $bloc;
+    private $result;
     /**
-     * @When j'accède à la page Accueil
+     * @Given je filtre sur la date :arg1
      */
-    public function jAccedeALaPageAccueil()
+    public function jeFiltreSurLaDate($arg1)
     {
-        throw new PendingException();
+        $d = DateTime::createFromFormat('d/m/Y', $arg1);
+        $this->bloc = new Bloc();
+        $this->bloc->setDate($d);
+        $this->result = $this->bloc->select();
     }
 
     /**
-     * @Then je vois l'ensemble des blocs
+     * @When un bloc existe avec la date :arg1
      */
-    public function jeVoisLEnsembleDesBlocs()
+    public function unBlocExisteAvecLaDate($arg1)
     {
-        throw new PendingException();
+        if(!count($this->result) == 1){
+            throw new Exception("Did not find one result but ". count($this->result));
+        }
     }
 
-
+    /**
+     * @Then je vois un seul bloc
+     */
+    public function jeVoisUnSeulBloc()
+    {
+        print_r($this->result);
+    }
 }

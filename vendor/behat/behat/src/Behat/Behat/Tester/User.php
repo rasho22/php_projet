@@ -19,7 +19,7 @@ class User {
     }
     public function connect(){
 
-        $requete = DBSingleton::getInstance()->prepare("SELECT * FROM User WHERE password = '?' AND pseudo = '?'");
+        $requete = DBSingleton::getInstance()->prepare("SELECT * FROM user WHERE password = '?' AND pseudo = '?'");
         $requete->execute(array($this->pwd,$this->pseudo));
     }
 }

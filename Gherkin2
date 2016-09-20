@@ -1,29 +1,25 @@
 Scénario: Visualisation de la page Accueil
-	Etant donné que je suis "Visiteur"
-	Alors j'accède à la page Accueil
-	Et je vois l'ensemble des blocs
+	Etant donné que je suis "visiteur"
+	Quand j'accède à la page Accueil
+	Alors je vois l'ensemble des blocs
 
 
 Scénario: Visualisation d'un bloc
 	Etant donné que je suis Visiteur
-	Lorsque je clique sur un bloc
+	Quand je clique sur un bloc
 	Alors le bloc s'agrandit
 
 
 Scénario: Rechercher par le biais de la date un bloc existant
-	Etant donné que je suis sur la page Accueil
-	Lorsque un bloc existe avec la date "01/01/1970"
-	Et que je filtre sur la date "01/01/1970"
-	Alors je suis sur la page Accueil
-	Et je vois un seul bloc
+	Etant donné que je filtre sur la date "01/01/1999"
+	Quand un bloc existe avec la date "01/01/1999"
+	Alors je vois un seul bloc
 
 
 Scénario: Rechercher par le biais du titre un bloc existant
-	Etant donné que je suis sur la page Accueil
-	Lorsque un bloc existe avec la titre "blabla"
-	Et que je filtre sur la titre "blabla"
-	Alors je suis sur la page Accueil
-	Et je vois un seul bloc
+	Etant donné que je filtre sur le titre "blabla"
+	Quand un bloc existe avec le titre "blabla"
+	Alors je vois un seul bloc
 
 
 Scénario: Rechercher par le biais d'un media un bloc existant
