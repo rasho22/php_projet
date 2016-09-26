@@ -36,8 +36,8 @@ class User {
         $sql = "SELECT * FROM User WHERE Role = ?";
         $db = DBSingleton::getInstance();
         $statement = $db->prepare($sql);
-        $result = $statement->execute(array($this->role->getId()));
-        return $result->fetchAll();
+        $result = $statement->execute(array($this->role->setId(2)));
+       /*return $result->fetchAll();*/
     }
 }
 

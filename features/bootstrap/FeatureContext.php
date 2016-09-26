@@ -20,51 +20,45 @@ class FeatureContext implements Context, SnippetAcceptingContext
 
     private $modo;
     /**
-     * @Given je suis :arg1
+     * @Given je suis connecté en tant que :arg1
      */
-    public function jeSuis($arg1)
-    {   
+    public function jeSuisConnecteEnTantQue($arg1)
+    {
         $this->modo = new Role($arg1);
 
-
-
-        if($arg1 != "Visiteur"){
+        if($arg1 == "Modérateur"){
             $u = new User();
             $u->setRole($this->modo);
             $u->select();
         
-            $user = new User ();
+            /*$user = new User ();
             $user->setMail('moi@moi.com');
             $user->setPseudo('jo');
             $user->setPwd('tyjow');
-            $user->connect();
+            $user->connect();*/
+
+            echo "\nVous êtes Modérateur";
         }
         else{
             // par défaut visiteur
-            echo "Vous êtes " . $arg1;
+            echo "Vous êtes Visiteur";
         }
     }
 
     /**
-     * @When j'accède à mon compte :arg1
+     * @When j'ajoute un bloc
      */
-    public function jAccedeAMonCompte($arg1)
+    public function jAjouteUnBloc()
     {
-        if($arg1 == "Modérateur"){
-            $user = new User ('jo','moi@moi.com','tyjow');
-            $user->connect();
-        }
-        else{
-            // par défaut visiteur
-        }
+        throw new PendingException();
     }
 
     /**
-     * @When je deviens :arg1
+     * @Then je peux changer la taille de ce bloc
      */
-    public function jeDeviens($arg1)
+    public function jePeuxChangerLaTailleDeCeBloc()
     {
-        $arg1 = true;
+        throw new PendingException();
     }
 
 }

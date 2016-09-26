@@ -6,8 +6,8 @@ Fonctionnalité: Utilisateurs
 	Je dois être capable de visualiser la page Accueil
 
 
-Scénario: Se connecter avec les bons identifiants
-	Etant donné je suis "Visiteur"
-	Quand j'accède à mon compte "Modérateur"
-	Et je deviens "Moderateur"
+Scénario: Editer un bloc en tant que modérateur
+	Etant donné que je suis connecté en tant que "Modérateur"
+	Quand j'ajoute un bloc
+	Alors je peux changer la taille de ce bloc
 

@@ -169,3 +169,39 @@
     {
         $arg1 = true;
     }
+
+======== Scénario: Rechercher par le biais d'un son un bloc existant
+Etant donné je filtre sur le son "David Guetta"
+Quand un bloc existe avec le son "David Guetta"
+Alors je vois un seul bloc =========
+
+    private $bloc;
+    private $result;
+    private $audio = array();
+    
+    /**
+    * @Given je filtre sur le son :arg1
+    */
+   public function jeFiltreSurLeSon($audio)
+   {
+       $this->bloc = new Bloc();
+       $this->bloc->setAudio($audio);
+       print_r($this->result = $this->bloc->select());
+   }    /**
+    * @When un bloc existe avec le son :arg1
+    */
+   public function unBlocExisteAvecLeSon($arg1)
+   {
+        if(count($this->result)>=1){
+           echo 'yes ';
+       }
+       else{
+           throw new Exception("Bloc non trouvé");
+       }
+   }    /**
+    * @Then je vois un seul bloc
+    */
+   public function jeVoisUnSeulBloc()
+   {
+       echo 'je fais rien parce que c\'est du Front et que mon resultat est bien trouvé ';
+   }
