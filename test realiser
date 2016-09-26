@@ -72,3 +72,100 @@
     {
         print_r($this->result);
     }
+
+
+========= Scénario: Rechercher par le biais du titre un bloc existant
+    Etant donné que je filtre sur le titre "blabla"
+    Quand un bloc existe avec le titre "blabla"
+    Alors je vois un seul bloc ===========
+
+
+    private $block;
+    private $result;
+    private $title = array();
+    
+    /**
+     * @Given je filtre sur le titre :title
+     */
+    public function jeFiltreSurLeTitre($title)
+    {
+        $this->block = new Block();
+        $this->block->setTitre($title);
+       print_r($this->result = $this->block->select());
+        
+    }
+    /**
+     * @When un bloc existe avec le titre :arg1
+     */
+    public function unBlocExisteAvecLeTitre($arg1)
+    {
+        if(count($this->result)>=1){
+            echo 'yes ';
+        }
+        else{
+            throw new Exception("Bloc non trouvé");
+        }
+    }
+    /**
+     * @Then je vois un seul bloc
+     */
+    public function jeVoisUnSeulBloc()
+    {
+         // Nothing to do. Only Front.
+    }
+
+
+========= Scénario: Se connecter avec les bons identifiants
+    Etant donné je suis "Visiteur"
+    Quand j'accède à mon compte "Modérateur"
+    Et je deviens "Moderateur" ===========
+
+
+    private $modo;
+    /**
+     * @Given je suis :arg1
+     */
+    public function jeSuis($arg1)
+    {   
+        $this->modo = new Role($arg1);
+
+
+
+        if($arg1 != "Visiteur"){
+            $u = new User();
+            $u->setRole($this->modo);
+            $u->select();
+        
+            $user = new User ();
+            $user->setMail('moi@moi.com');
+            $user->setPseudo('jo');
+            $user->setPwd('tyjow');
+            $user->connect();
+        }
+        else{
+            // par défaut visiteur
+            echo "Vous êtes " . $arg1;
+        }
+    }
+
+    /**
+     * @When j'accède à mon compte :arg1
+     */
+    public function jAccedeAMonCompte($arg1)
+    {
+        if($arg1 == "Modérateur"){
+            $user = new User ('jo','moi@moi.com','tyjow');
+            $user->connect();
+        }
+        else{
+            // par défaut visiteur
+        }
+    }
+
+    /**
+     * @When je deviens :arg1
+     */
+    public function jeDeviens($arg1)
+    {
+        $arg1 = true;
+    }
