@@ -6,8 +6,8 @@ Fonctionnalité: Utilisateurs
 	Je dois être capable de visualiser la page Accueil
 
 
-Scénario: Rechercher par le biais de la date un bloc existant
-	Etant donné que je filtre sur la date "01/01/1999"
-	Quand un bloc existe avec la date "01/01/1999"
-	Alors je vois un seul bloc
+Scénario: Se connecter avec les bons identifiants
+	Etant donné je suis "Visiteur"
+	Quand j'accède à mon compte "Modérateur"
+	Et je deviens "Moderateur"
 

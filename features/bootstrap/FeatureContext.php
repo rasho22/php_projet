@@ -8,41 +8,63 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Tester\User;
 use Behat\Behat\Tester\DBconnection;
 use Behat\Behat\Tester\Bloc;
+use Behat\Behat\Tester\Role;
 
 /**
  * Defines application features from the specific context.
  */
 
+
 class FeatureContext implements Context, SnippetAcceptingContext
 {
-    private $bloc;
-    private $result;
-    /**
-     * @Given je filtre sur la date :arg1
-     */
-    public function jeFiltreSurLaDate($arg1)
-    {
-        $d = DateTime::createFromFormat('d/m/Y', $arg1);
-        $this->bloc = new Bloc();
-        $this->bloc->setDate($d);
-        $this->result = $this->bloc->select();
-    }
 
+    private $modo;
     /**
-     * @When un bloc existe avec la date :arg1
+     * @Given je suis :arg1
      */
-    public function unBlocExisteAvecLaDate($arg1)
-    {
-        if(!count($this->result) == 1){
-            throw new Exception("Did not find one result but ". count($this->result));
+    public function jeSuis($arg1)
+    {   
+        $this->modo = new Role($arg1);
+
+
+
+        if($arg1 != "Visiteur"){
+            $u = new User();
+            $u->setRole($this->modo);
+            $u->select();
+        
+            $user = new User ();
+            $user->setMail('moi@moi.com');
+            $user->setPseudo('jo');
+            $user->setPwd('tyjow');
+            $user->connect();
+        }
+        else{
+            // par défaut visiteur
+            echo "Vous êtes " . $arg1;
         }
     }
 
     /**
-     * @Then je vois un seul bloc
+     * @When j'accède à mon compte :arg1
      */
-    public function jeVoisUnSeulBloc()
+    public function jAccedeAMonCompte($arg1)
     {
-        print_r($this->result);
+        if($arg1 == "Modérateur"){
+            $user = new User ('jo','moi@moi.com','tyjow');
+            $user->connect();
+        }
+        else{
+            // par défaut visiteur
+        }
     }
+
+    /**
+     * @When je deviens :arg1
+     */
+    public function jeDeviens($arg1)
+    {
+        $arg1 = true;
+    }
+
 }

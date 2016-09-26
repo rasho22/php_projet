@@ -1,3 +1,9 @@
+========= Scénario: Visualisation de la page Accueil
+    Etant donné que je suis "visiteur"
+    Quand j'accède à la page Accueil
+    Alors je vois l'ensemble des blocs ============
+
+
  /** @Given je suis :arg1
      *
      */
@@ -28,4 +34,41 @@
     public function jeVoisLEnsembleDesBlocs()
     {
         throw new PendingException();
+    }
+
+
+========= Scénario: Rechercher par le biais de la date un bloc existant
+    Etant donné que je filtre sur la date "01/01/1999"
+    Quand un bloc existe avec la date "01/01/1999"
+    Alors je vois un seul bloc ============
+
+    private $bloc;
+    private $result;
+    /**
+     * @Given je filtre sur la date :arg1
+     */
+    public function jeFiltreSurLaDate($arg1)
+    {
+        $d = DateTime::createFromFormat('d/m/Y', $arg1);
+        $this->bloc = new Bloc();
+        $this->bloc->setDate($d);
+        $this->result = $this->bloc->select();
+    }
+
+    /**
+     * @When un bloc existe avec la date :arg1
+     */
+    public function unBlocExisteAvecLaDate($arg1)
+    {
+        if(!count($this->result) == 1){
+            throw new Exception("Did not find one result but ". count($this->result));
+        }
+    }
+
+    /**
+     * @Then je vois un seul bloc
+     */
+    public function jeVoisUnSeulBloc()
+    {
+        print_r($this->result);
     }
