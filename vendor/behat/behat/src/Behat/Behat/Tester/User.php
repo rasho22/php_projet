@@ -38,10 +38,10 @@ class User {
         $statement->execute();
         /*print_r($statement->errorInfo());*/
         if($statement->rowCount() > 0){
-            echo "\n\033[1;36mExistant\n";
+            echo "\n\033[0;33m Utilisateur existant\n";
         } 
         else {
-            echo "\n\033[1;31mNon existant\n";
+            echo "\n\033[1;31m Utilisateur non existant\n";
         }
     }
     public function addModo(){
