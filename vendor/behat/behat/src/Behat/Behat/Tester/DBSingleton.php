@@ -29,7 +29,7 @@ class DBSingleton
 	 try{
 		self::$inst = new \PDO("mysql:host=$db_server;dbname=$db_name",$db_usr,$db_psw);
 		
-		echo 'Connexion à la base de donnée réussie!';
+		echo "Connexion à la base de donnée réussie!\n";
 	}
 	catch (Exception $e){
 		echo 'Echec de la connection : '.$e->getMessage();

@@ -16,13 +16,6 @@ class User {
     {
         
     }
-    public function connect(){
-
-        $requete = DBSingleton::getInstance();
-        $sql = "SELECT * FROM user WHERE password = '?' AND pseudo = '?'";
-        $statement = $requete->prepare($sql);
-        $statement->execute(array($this->pwd,$this->pseudo));
-    }
     public function setRole(Role $role){
         $this->role = $role;
     }
@@ -32,8 +25,33 @@ class User {
     public function setPwd($pwd){
         $this->pwd = $pwd;
     }
+    public function setPseudo($pseudo){
+        $this->pseudo = $pseudo;
+    }
+    public function connect(){
+        $requete = DBSingleton::getInstance();
+        $sql = "SELECT * FROM user WHERE password = :pwd AND pseudo = :pseudo AND mail = :mail";
+        $statement = $requete->prepare($sql);
+        $statement->bindParam(':pseudo', $this->pseudo);
+        $statement->bindParam(':pwd', $this->pwd);
+        $statement->bindParam(':mail', $this->mail);
+        $statement->execute();
+        /*print_r($statement->errorInfo());*/
+        if($statement->rowCount() > 0){
+            echo "\n\033[1;36mExistant\n";
+        } 
+        else {
+            echo "\n\033[1;31mNon existant\n";
+        }
+    }
+    public function addModo(){
+        $requete = DBSingleton::getInstance();
+        $addsql = "INSERT INTO user (pseudo, password, mail, role) VALUES ('youness', 'yoseboss', 'yose@yose.com', 2)";
+        $statement = $requete->prepare($addsql);
+        $statement->execute(array($this->pwd,$this->pseudo,$this->email,$this->role));
+    }
     public function select(){
-        $sql = "SELECT * FROM User WHERE Role = ?";
+        $sql = "SELECT * FROM user WHERE role = '?'";
         $db = DBSingleton::getInstance();
         $statement = $db->prepare($sql);
         $result = $statement->execute(array($this->role->setId(2)));

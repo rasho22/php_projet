@@ -6,7 +6,7 @@ use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Tester\User;
-use Behat\Behat\Tester\DBconnection;
+use Behat\Behat\Tester\DBSingleton;
 use Behat\Behat\Tester\Bloc;
 use Behat\Behat\Tester\Role;
 
@@ -18,17 +18,17 @@ use Behat\Behat\Tester\Role;
 class FeatureContext implements Context, SnippetAcceptingContext
 {
 
-    private $modo;
+    private $admin;
     /**
-     * @Given je suis connecté en tant que :arg1
+     * @Given je suis :arg1
      */
-    public function jeSuisConnecteEnTantQue($arg1)
-    {
-        $this->modo = new Role($arg1);
+    public function jeSuis($arg1)
+    {   
+        $this->admin = new Role($arg1);
 
-        if($arg1 == "Modérateur"){
+        if($arg1 != "Visiteur"){
             $u = new User();
-            $u->setRole($this->modo);
+            $u->setRole($this->admin);
             $u->select();
         
             /*$user = new User ();
@@ -36,29 +36,69 @@ class FeatureContext implements Context, SnippetAcceptingContext
             $user->setPseudo('jo');
             $user->setPwd('tyjow');
             $user->connect();*/
-
-            echo "\nVous êtes Modérateur";
         }
         else{
             // par défaut visiteur
-            echo "Vous êtes Visiteur";
+            echo "Vous êtes " . $arg1;
         }
     }
-
     /**
-     * @When j'ajoute un bloc
+     * @When j'accède à mon compte :arg1
      */
-    public function jAjouteUnBloc()
+    public function jAccedeAMonCompte($arg1)
     {
-        throw new PendingException();
+        if($arg1 == "Super Admin"){
+            $user = new User();
+            $user->setPseudo('toto');
+            $user->setPwd('erwann');
+            $user->setMail('mail@mail.com');
+            $user->connect();
+        }
+        else{
+            // par défaut visiteur
+            echo "Non";
+        }
+    }
+    /**
+     * @When je deviens :arg1
+     */
+    public function jeDeviens($arg1)
+    {
+        $arg1 = true;
     }
 
+
+
     /**
-     * @Then je peux changer la taille de ce bloc
+     * @Given je suis connecté en tant que :arg1
      */
-    public function jePeuxChangerLaTailleDeCeBloc()
+    public function jeSuisConnecteEnTantQue($arg1)
     {
-        throw new PendingException();
+        if($arg1 == "Super Admin"){
+            $user = new User();
+            $user->setPseudo('toto');
+            $user->setPwd('erwann');
+            $user->setMail('mail@mail.com');
+            $user->connect();
+        }
+        else{
+            // par défaut visiteur
+        }
+    }
+    /**
+     * @When je creé un compte :arg1
+     */
+    public function jeCreeUnCompte($arg1)
+    {
+        /*$conn = new User();
+        $conn->addModo();*/
+    }
+    /**
+     * @Then je peux ajouter une permission editer au compte :arg1
+     */
+    public function jePeuxAjouterUnePermissionEditerAuCompte($arg1)
+    {
+        $arg1 = true;
     }
 
 }
