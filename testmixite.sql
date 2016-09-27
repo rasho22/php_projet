@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 27 Septembre 2016 à 15:22
+-- Généré le :  Mar 27 Septembre 2016 à 17:07
 -- Version du serveur :  5.7.13-0ubuntu0.16.04.2
 -- Version de PHP :  7.0.8-0ubuntu0.16.04.2
 
@@ -50,16 +50,17 @@ INSERT INTO `Bloc` (`id`, `titre`, `image`, `video`, `audio`, `date`) VALUES
 
 CREATE TABLE `Role` (
   `id` int(11) NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_bin NOT NULL
+  `type` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `droits` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Contenu de la table `Role`
 --
 
-INSERT INTO `Role` (`id`, `type`) VALUES
-(1, 'super_admin'),
-(2, 'moderateur');
+INSERT INTO `Role` (`id`, `type`, `droits`) VALUES
+(1, 'Super Admin', 7),
+(2, 'Modérateur', 1);
 
 -- --------------------------------------------------------
 
