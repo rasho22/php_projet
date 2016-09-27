@@ -44,21 +44,31 @@ class User {
             echo "\n\033[1;31m Utilisateur non existant\n";
         }
     }
-    public function addModo(){
+    public function create(){
+
+        //FIXME : Check if it is a valid user
+        // if($this->isValid())
         $requete = DBSingleton::getInstance();
-        $addsql = "INSERT INTO user (pseudo, password, mail, role) VALUES ('youness', 'yoseboss', 'yose@yose.com', 2)";
+        $addsql = "INSERT INTO user (pseudo, password, mail, role) VALUES (?,?,?,?)";
+        $params = array(
+            $this->pseudo,
+            $this->pwd,
+            $this->email,
+            $this->role->getId());
         $statement = $requete->prepare($addsql);
-        $statement->execute(array($this->pwd,$this->pseudo,$this->email,$this->role));
+        $statement->execute($params);
     }
     public function select(){
-        $sql = "SELECT * FROM user WHERE role = '?'";
+        $sql = "SELECT * FROM user WHERE role = ?";
         $db = DBSingleton::getInstance();
         $statement = $db->prepare($sql);
-        $result = $statement->execute(array($this->role->setId(2)));
-       /*return $result->fetchAll();*/
+        $statement->execute(array($this->role->getId()));
+
+        if($statement->errorCode()!="00000"){
+            var_dump($statement->errorInfo());
+            throw new \Exception("Impossible to select user");
+        }
+        return $statement->fetchAll();
     }
 }
-
-
-
 ?>

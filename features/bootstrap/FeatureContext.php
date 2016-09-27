@@ -18,24 +18,21 @@ use Behat\Behat\Tester\Role;
 class FeatureContext implements Context, SnippetAcceptingContext
 {
 
-    private $admin;
     /**
      * @Given je suis :arg1
      */
     public function jeSuis($arg1)
     {   
-        $this->admin = new Role($arg1);
+        
 
         if($arg1 != "Visiteur"){
             $u = new User();
-            $u->setRole($this->admin);
-            $u->select();
-        
-            /*$user = new User ();
-            $user->setMail('moi@moi.com');
-            $user->setPseudo('jo');
-            $user->setPwd('tyjow');
-            $user->connect();*/
+            $u->setRole(new Role($arg1));
+            $result = $u->select();
+            if(count($result)==0){
+                throw new \Exception("Apparemment je n'ai pas eu de user selectionné");
+            }
+
         }
         else{
             // par défaut visiteur
@@ -91,7 +88,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     public function jeCreeUnCompte($arg1)
     {
         /*$conn = new User();
-        $conn->addModo();*/
+        $conn->create();*/
     }
     /**
      * @Then je peux ajouter une permission editer au compte :arg1
